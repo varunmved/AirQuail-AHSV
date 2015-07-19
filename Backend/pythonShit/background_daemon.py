@@ -88,6 +88,8 @@ def runFirebase():
 
         print("1")
         baseTemp = tempData['result']
+        if (baseTemp < 27):
+            j = requests.get("https://messagingapi.sinch.com/v1/sms/14242535865", auth=('a2d52e58-fb8a-45b5-93a8-9575ea4ea749', 'YxZSH0WFjUi2r26iGsQoig=='))
 
         print("2")
         baseRH = rhData['result']

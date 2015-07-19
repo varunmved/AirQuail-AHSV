@@ -55,6 +55,15 @@
     }
 </script>
 
+<script>
+var chartjsData = [];
+var labelTime = [];
+for (var i = 0; i < json.length; i++) {
+    chartjsData.push(json[i].temperature);
+    labelTime.push(json[i].local_time);
+}
+</script>
+
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="dist/images/favicon.png">
@@ -88,6 +97,14 @@
 </div>
 
         <a class='button button-primary' href="">Refresh</a>
+
+        <span id="myImage"><img id="myImage" ></span>
+
+        <a class='button button-primary' href="">Sinch Me</a>
+
+        <span id="myImage"><img id="myImage" ></span>
+
+        <a class='button button-primary' href="">Spark Post</a>
 
         <span id="myImage"><img id="myImage" ></span>
 
@@ -158,12 +175,7 @@ var json =   [
    "humidity": 37
  }
 ]
-var chartjsData = [];
-var labelTime = [];
-// for (var i = 0; i < json.length; i++) {
-//     chartjsData.push(json[i].temperature);
-//     labelTime.push(json[i].local_time);
-// }
+
     var data = {
         labels: ["11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"],
         datasets: [
