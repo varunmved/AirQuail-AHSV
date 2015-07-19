@@ -1,18 +1,17 @@
 {
-  "name": "cloudpoint",
+  "name": "airquail",
   "version": "1.0.0",
-  "description": "cloudpoint backend for cool shit",
-  "main": "index.js",
+  "description": "airquail backend",
+  "main": "pull.js",
   "scripts": {
-    "test": "make test"
-
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/varunmved/AirQuail.git"
   },
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/varunmved/AirQuail/issues"
   },
