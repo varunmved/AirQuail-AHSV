@@ -1,14 +1,19 @@
 import threading
 import time, urllib, json, urllib3, requests
+import datetime
 #import firebase_util as fire
 from firebase import firebase
+import pymongo
+from pymongo import MongoClient
+import redis
 
 #import human_curl as requests
 
-#requests.packages.urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 
 #f = open("lol.txt", 'w')
 firebase = firebase.FirebaseApplication('https://airquail.firebaseio.com/', None)
+#r = redis.StrictRedis(host='localhost', port=6379, db=0)
 '''
 def pushToFireBaseBulk(sensorData):
     fire.putIntoFirebaseSensor_Temp(sensorData['result'])
@@ -51,39 +56,52 @@ def run():
         print "reporting finished"
         time.sleep(1)
 '''
-def run2():
+def putIntoFirebaseSensor_Temp(Temperature):
+    firebase.put('/Sensor', "Temperature", Temperature)
+
+def putIntoFirebaseSensor_Humidity(Humidity):
+    firebase.put('/Sensor', "Humidity", Humidity)
+
+def putIntoFirebaseSensor_CO(CO):
+    firebase.put('/Sensor',  "CO", CO)
+
+def putIntoFirebaseSensor_CO2(CO2):
+    firebase.put('/Sensor', "C02", C02)
+
+def runFirebase():
     while True:
-        url = "https://api.particle.io/v1/devices/55ff6d066678505541381667/temp?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
+        url = "https://api.particle.io/v1/devices/53ff6f065067544833490587/temp?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
         url2 = "https://api.particle.io/v1/devices/55ff6d066678505541381667/rh?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
         url3= "https://api.particle.io/v1/devices/55ff6d066678505541381667/mq4?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
-        #url4= "https://api.particle.io/v1/devices/55ff6d066678505541381667/methane?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
         #mq7 is carbonmonoxide
         url5= "https://api.particle.io/v1/devices/55ff6d066678505541381667/mq7?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
-        #url6= "https://api.particle.io/v1/devices/55ff6d066678505541381667/carbonmonoxide?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
 
         results = requests.get(url)
-        results2 = requests.get(url2)
+        #results2 = requests.get(url2)
         results3 = requests.get(url3)
-        #results4 = requests.get(url4)
         results5 = requests.get(url5)
-        #results6 = requests.get(url6)
 
         tempData = results.json()
-        rhData = results2.json()
+        #rhData = results2.json()
         mq4Data = results3.json()
-        #methaneData = results4.json()
         mq7Data = results5.json()
-        #carbonmonoxideData = results6.json()
 
-
+        print("1")
         baseTemp = tempData['result']
-        baseRH = rhData['results']
+
+        print("2")
+        #baseRH = rhData['results']
         #carbon monoxide
+        print("3")
+
         baseMQ7 = mq7Data['result']
         #MQ4
+        print("4")
+
         baseMQ4 = mq4Data['result']
         #methane
-        baseMethane = methaneData['result']
+        #baseMethane = methaneData['result']
+
 
         #print(arghh)
         print('Doing something imporant in the background')
@@ -96,17 +114,54 @@ def run2():
         print "reporting finished"
         time.sleep(5)
 
-def putIntoFirebaseSensor_Temp(Temperature):
-    firebase.put('/Sensor', "Temperature", Temperature)
+def runMongoDB():
+    while True:
+        print('adding to mongo')
+        client = MongoClient('localhost', 27017)
+        client = MongoClient('mongodb://localhost:27017/')
+        #db = client.test_database
+        db = client['test-database']
+        url = "https://api.particle.io/v1/devices/53ff6f065067544833490587/temp?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
+        url2 ="https://api.particle.io/v1/devices/53ff6f065067544833490587/rh?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
+        url3= "https://api.particle.io/v1/devices/55ff6d066678505541381667/mq4?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
+        #mq7 is carbonmonoxide
+        url5= "https://api.particle.io/v1/devices/55ff6d066678505541381667/mq7?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
 
-def putIntoFirebaseSensor_Humidity(Humidity):
-    firebase.put('/Sensor', "Humidity", Humidity)
+        results = requests.get(url)
+        results2 = requests.get(url2)
+        results3 = requests.get(url3)
+        results5 = requests.get(url5)
 
-def putIntoFirebaseSensor_CO(CO):
-    firebase.put('/Sensor',  "CO", CO)
+        tempData = results.json()
+        rhData = results2.json()
+        #mq4Data = results3.json()
+        #mq7Data = results5.json()
 
-def putIntoFirebaseSensor_CO2(CO2):
-    firebase.put('/Sensor', "C02", C02)
+        print("1")
+        baseTemp = tempData['result']
+
+        print("2")
+        baseRH = rhData['result']
+        #carbon monoxide
+        print("3")
+        #baseMQ7 = mq7Data['result']
+        #MQ4
+        print("4")
+
+        #baseMQ4 = mq4Data['result']
+        #methane
+        #baseMethane = methaneData['result']
+        post = {"temperature":baseTemp, "humidity":baseRH, "local_time": datetime.datetime.now()}
+        posts = db.posts
+        post_id = posts.insert(post)
+        print("done")
+        time.sleep(30)
+'''
+def runRedis():
+    while True:
+        r.set('foo', 'bar')
+'''
+
 
 '''
         r = requests.get(url);
@@ -130,7 +185,9 @@ def putIntoFirebaseSensor_CO2(CO2):
             print "reporting finished"
             time.sleep(self.interval)
 '''
-run2()
+#runFirebase()
+runMongoDB()
+#runred()
 '''
 class background_daemon(object):
     """ Threading example class
@@ -154,7 +211,6 @@ class background_daemon(object):
         """ Method that runs forever """
         while True:
             # Do something
-            #url = "http://172.31.99.4/vehicle"
             f.write(r)
             url = "https://api.particle.io/v1/devices/55ff6d066678505541381667/temp?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
             # = hurl.get(url,auth=('test_username', 'test_password'))
