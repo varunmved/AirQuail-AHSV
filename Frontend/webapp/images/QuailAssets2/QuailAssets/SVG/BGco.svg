@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="1024px" viewBox="0 0 1440 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 4 + Rectangle 4 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="105.594086%" id="linearGradient-1">
+            <stop stop-color="#6B859A" stop-opacity="0.311084692" offset="0%"></stop>
+            <stop stop-color="#4DBDFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="105.594086%" id="linearGradient-2">
+            <stop stop-color="#313030" stop-opacity="0.311084692" offset="0%"></stop>
+            <stop stop-color="#52B3ED" stop-opacity="0.87378516" offset="81.6791936%"></stop>
+            <stop stop-color="#52B3ED" stop-opacity="0.87378516" offset="81.6791936%"></stop>
+            <stop stop-color="#52B3ED" stop-opacity="0.87378516" offset="81.6791936%"></stop>
+            <stop stop-color="#52B3ED" stop-opacity="0.87378516" offset="81.6791936%"></stop>
+            <stop stop-color="#4DBDFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="CO-web" sketch:type="MSArtboardGroup">
+            <g id="Rectangle-4-+-Rectangle-4-Copy" sketch:type="MSLayerGroup">
+                <path d="M720.5,0 L1441,0 L1441,1024 L720.5,1024 L0,1024 L0,0 L720.5,0 Z" id="Rectangle-4" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup"></path>
+                <rect id="Rectangle-4-Copy" fill="url(#linearGradient-2)" sketch:type="MSShapeGroup" x="0" y="0" width="1440" height="1024"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

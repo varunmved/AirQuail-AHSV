@@ -71,36 +71,31 @@ def putIntoFirebaseSensor_CO2(CO2):
 def runFirebase():
     while True:
         url = "https://api.particle.io/v1/devices/53ff6f065067544833490587/temp?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
-        url2 = "https://api.particle.io/v1/devices/55ff6d066678505541381667/rh?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
+        url2 ="https://api.particle.io/v1/devices/53ff6f065067544833490587/rh?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
         url3= "https://api.particle.io/v1/devices/55ff6d066678505541381667/mq4?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
         #mq7 is carbonmonoxide
         url5= "https://api.particle.io/v1/devices/55ff6d066678505541381667/mq7?access_token=bb3dc001dbd1e097caf31f118ab706f977085740"
 
         results = requests.get(url)
-        #results2 = requests.get(url2)
+        results2 = requests.get(url2)
         results3 = requests.get(url3)
         results5 = requests.get(url5)
 
         tempData = results.json()
-        #rhData = results2.json()
-        mq4Data = results3.json()
-        mq7Data = results5.json()
+        rhData = results2.json()
+        #mq4Data = results3.json()
+        #mq7Data = results5.json()
 
         print("1")
         baseTemp = tempData['result']
 
         print("2")
-        #baseRH = rhData['results']
+        baseRH = rhData['result']
         #carbon monoxide
         print("3")
-
-        baseMQ7 = mq7Data['result']
+        #baseMQ7 = mq7Data['result']
         #MQ4
         print("4")
-
-        baseMQ4 = mq4Data['result']
-        #methane
-        #baseMethane = methaneData['result']
 
 
         #print(arghh)
@@ -108,8 +103,8 @@ def runFirebase():
         #arghh = "a"
         #pushToFireBaseBulk(bulkData)
         putIntoFirebaseSensor_Temp(baseTemp)
-        putIntoFirebaseSensor_CO(baseMQ7)
-        putIntoFirebaseSensor_CO2(baseMQ4)
+        #putIntoFirebaseSensor_CO(baseMQ7)
+        #putIntoFirebaseSensor_CO2(baseMQ4)
         putIntoFirebaseSensor_Humidity(baseRH)
         print "reporting finished"
         time.sleep(5)
@@ -185,8 +180,8 @@ def runRedis():
             print "reporting finished"
             time.sleep(self.interval)
 '''
-#runFirebase()
-runMongoDB()
+runFirebase()
+#runMongoDB()
 #runred()
 '''
 class background_daemon(object):

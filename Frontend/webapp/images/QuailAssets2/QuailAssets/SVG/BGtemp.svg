@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1440px" height="1024px" viewBox="0 0 1440 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 1 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="101.50518%" x2="218.731129%" y2="-73.7743437%" id="linearGradient-1">
+            <stop stop-color="#315B7D" offset="0%"></stop>
+            <stop stop-color="#DB3E3E" offset="97.958343%"></stop>
+            <stop stop-color="#DD3D3D" offset="99.064592%"></stop>
+            <stop stop-color="#D64143" offset="100%"></stop>
+            <stop stop-color="#DE513C" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="1440" height="1024"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Temp-web" sketch:type="MSArtboardGroup">
+            <g id="Rectangle-1-Copy">
+                <use fill="none" sketch:type="MSShapeGroup" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Quail</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="dist/css/normalize.css">
+  <link rel="stylesheet" href="dist/css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <link rel="stylesheet" href="css/github-prettify-theme.css">
+  <script src="js/site.js"></script>
+
+  <script src="js/chart.js"></script>
+
+<script>
+    window.onload = function() {
+    var d = new Date();
+    var n = d.toISOString();
+    console.log(n);
+    document.getElementById("output").innerHTML=d;
+    }
+</script>
+
+<script>
+    window.onload = function(){
+        var temp = 25;
+
+        if(temp <= 25) {
+            document.getElementById('myImage').src = "images/QuailAssets2/QuailAssets/PNG/Emoji/S1.png";
+        } else if(temp > 25) {
+            document.getElementById('myImage').src = "images/QuailAssets2/QuailAssets/PNG/Emoji/S6.png";
+        } else {
+            alert("You have a weird variable value");
+        }
+    }
+</script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="dist/images/favicon.png">
+
+</head>
+<body class="code-snippets-visible">
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <section class="header">
+      <h1 class="title"><b>Quail</b></h1>
+        <h3 class="title">Your environment in real-time</h3>
+
+
+<div>
+<marquee behavior="scroll" bgcolor="#666666" loop="-1" width="95%">
+   <i>
+      <font color="white">
+        <strong>
+         Sunnyvale, CA /
+         <span id="output"></span>
+         <img src="images/partly_cloudy.png" width="20"/>
+        </strong>
+      </font>
+   </i>
+</marquee>
+</div>
+
+        <a class='button button-primary' href="">Refresh</a>
+
+        <span id="myImage"><img id="myImage" ></span>
+
+    <center><canvas id="myChart" width="200" height="200"></canvas></center>
+    <script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+//     var json =   [
+//  {
+//    "local_time": "2015-07-19T11:11:15",
+//    "temperature": 23,
+//    "humidity": 37
+//  },
+//  {
+//    "local_time": "2015-07-19 11:10:40",
+//    "temperature": 23,
+//    "humidity": 37
+//  },
+//  {
+//    "local_time": "2015-07-19 11:10:05",
+//    "temperature": 23,
+//    "humidity": 37
+//  },
+//  {
+//    "local_time": "2015-07-19 11:09:25",
+//    "temperature": 23,
+//    "humidity": 37
+//  }
+// ]
+//
+// var chartjsData = [];
+// var labelTime = [];
+// for (var i = 0; i < json.length; i++) {
+//     chartjsData.push(json[i].temperature);
+//     labelTime.push(json[i].local_time);
+// }
+//
+// var barChartData = {
+//             labels :labelTime,datasets : [
+//                 {
+//                     fillColor : "rgba(220,280,220,0.5)",
+//                     strokeColor : "rgba(220,220,220,1)",
+//                     data : chartjsData
+//
+//                 }
+//             ]
+//         };
+//     var myLineChart = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+var json =   [
+ {
+   "local_time": "2015-07-19T11:11:15",
+   "temperature": 23,
+   "humidity": 37
+ },
+ {
+   "local_time": "2015-07-19 11:10:40",
+   "temperature": 23,
+   "humidity": 37
+ },
+ {
+   "local_time": "2015-07-19 11:10:05",
+   "temperature": 23,
+   "humidity": 37
+ },
+ {
+   "local_time": "2015-07-19 11:09:25",
+   "temperature": 23,
+   "humidity": 37
+ }
+]
+var chartjsData = [];
+var labelTime = [];
+// for (var i = 0; i < json.length; i++) {
+//     chartjsData.push(json[i].temperature);
+//     labelTime.push(json[i].local_time);
+// }
+    var data = {
+        labels: ["11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"],
+        datasets: [
+          // for (var i = 0; i < json.length; i++) {
+          //     chartjsData.push(json[i].temperature);
+          //     labelTime.push(json[i].local_time);
+            {
+                label: "Temperature :: degC",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [14.0, 5.0, 4.5, 5.0, 5.0, 5.5, 5.0]
+
+            },
+            {
+                label: "Humidity :: ppm",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [4.0, 5.0, 4.5, 5.0, 5.0, 5.5, 5.0]
+            }
+        ]
+    };
+
+
+    var myLineChart = new Chart(ctx).Line(data, {pointDotRadius : 4});
+
+    new Chart(ctx).Line(data, {pointDotRadius : 4});
+    </script>
+
+
+
+    </section>
+
+    <div class="navbar-spacer"></div>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
+          <li class="navbar-item">
+            <a class="navbar-link" href="#" data-popover="#codeNavPopover">Code</a>
+            <div id="codeNavPopover" class="popover">
+              <ul class="popover-list">
+                <li class="popover-item">
+                  <a class="popover-link" href="#grid">Grid</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#typography">Typography</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#buttons">Buttons</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#forms">Forms</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#lists">Lists</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#code">Code</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#tables">Tables</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#queries">Queries</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="#utilities">Utilities</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="navbar-item"><a class="navbar-link" href="#examples">Examples</a></li>
+          <li class="navbar-item">
+            <a class="navbar-link" href="#" data-popover="#moreNavPopover">More</a>
+            <div id="moreNavPopover" class="popover">
+              <ul class="popover-list">
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/dhg/Skeleton">On Github</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/dhg/Skeleton#browser-support">Browsers</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/dhg/Skeleton#license">License</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/dhg/Skeleton#extensions">Extensions</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/dhg/Skeleton/releases">Versions</a>
+                </li>
+                <li class="popover-item">
+                  <a class="popover-link" href="https://github.com/dhg/Skeleton#colophon">Colophon</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Why use Skeleton -->
+    <div class="docs-section" id="intro">
+      <h6 class="docs-header">Is Quail for you?</h6>
+      <p>Quail enables business, home owners, and vehicles to use our data Lol to analyze enviormental impacts</p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.getskeleton.com" data-text="Skeleton - A dead simple, responsive boilerplate." data-via="dhg" data-related="dhg">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.getskeleton.com&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=151131931646052" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width:140px" allowTransparency="true"></iframe> -->
+      <1<iframe src="http://ghbtns.com/github-btn.html?user=dhg&repo=Skeleton&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+      <iframe src="http://ghbtns.com/github-btn.html?user=dhg&repo=Skeleton&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+    </div>
+
+
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
