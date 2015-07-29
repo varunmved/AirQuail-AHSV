@@ -23,6 +23,7 @@ def putIntoFirebaseSensor_CO(CO):
 
 def putIntoFirebaseSensor_CO2(CO2):
     firebase.put('/Sensor', C02, "C02")
-
+'''
 def putIntoFirebaseSensor_Dust(Dust):
     firebase.put('/Sensor', Dust, "Dust")
+'''
