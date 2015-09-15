@@ -1,0 +1,9 @@
+{
+  "timeStart" : 1439763797,
+  "pm" : 585.34,
+  "co" : 34.23,
+  "temp" : 32,
+  "humidity" : 12,
+  "booleanPMDanger": false,
+  "booleanCODanger": false
+}

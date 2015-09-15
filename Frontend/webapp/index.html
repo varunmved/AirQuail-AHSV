@@ -36,7 +36,7 @@
     window.onload = function() {
     var d = new Date();
     var n = d.toISOString();
-    console.log(n);
+    //console.log(n);
     document.getElementById("output").innerHTML=d;
     }
 </script>
@@ -63,7 +63,11 @@ for (var i = 0; i < json.length; i++) {
     labelTime.push(json[i].local_time);
 }
 </script>
-
+<div>
+<center><a class='button button-primary' href="">About</a>
+<a class='button button-primary' href="">Analytics</a>
+<a class='button button-primary' href="">Settings</a></center>
+</div>
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="dist/images/favicon.png">
@@ -78,8 +82,8 @@ for (var i = 0; i < json.length; i++) {
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <section class="header">
-      <h1 class="title"><b>Quail</b></h1>
-        <h3 class="title">Your environment in real-time</h3>
+      <h1 class="title"><b>airQuail</b></h1>
+        <h4 class="title">IOT smart environment sensors</h4>
 
 
 <div>
@@ -94,21 +98,26 @@ for (var i = 0; i < json.length; i++) {
       </font>
    </i>
 </marquee>
+<h2></h2>
 </div>
+
+        <img src="images/QuailAssets2/QuailAssets/PNG/Emoji/S1.png" width="30" />
 
         <a class='button button-primary' href="">Refresh</a>
 
         <span id="myImage"><img id="myImage" ></span>
 
-        <a class='button button-primary' href="">Sinch Me</a>
+        <a class='button button-primary' href="">Text on Sinch</a>
+        <script>
+          
+        </script>
 
         <span id="myImage"><img id="myImage" ></span>
 
-        <a class='button button-primary' href="">Spark Post</a>
+        <a class='button button-primary' href="">Email on SparkPost</a>
 
-        <span id="myImage"><img id="myImage" ></span>
 
-    <center><canvas id="myChart" width="200" height="200"></canvas></center>
+    <center><canvas id="myChart" width="450" height="200"></canvas></center>
     <script>
     var ctx = document.getElementById("myChart").getContext("2d");
 
@@ -177,31 +186,42 @@ var json =   [
 ]
 
     var data = {
-        labels: ["11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"],
+        labels: ["12:30pm", "12:40pm", "12:50pm", "01:00pm", "01:10pm", "01:20pm", "01:30pm"],
         datasets: [
           // for (var i = 0; i < json.length; i++) {
           //     chartjsData.push(json[i].temperature);
           //     labelTime.push(json[i].local_time);
-            {
-                label: "Temperature :: degC",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [14.0, 5.0, 4.5, 5.0, 5.0, 5.5, 5.0]
+          {
+              label: "Temperature :: degC",
+              fillColor: "rgba(200,0,0,0.2)",
+              strokeColor: "rgba(220,220,220,1)",
+              pointColor: "rgba(255,0,0,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(220,220,220,1)",
+              data: [25, 26, 29, 24, 24, 24, 25]
 
-            },
+          },
+          {
+              label: "CO :: ppm",
+              fillColor: "rgba(0,200,0,0.2)",
+              strokeColor: "rgba(170,220,220,1)",
+              pointColor: "rgba(0,255,0,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#ff1",
+              pointHighlightStroke: "rgba(170,220,220,1)",
+              data: [2.0, 1.9, 1.9, 2.0, 2.1, 2.0, 1.9]
+
+          },
             {
-                label: "Humidity :: ppm",
-                fillColor: "rgba(151,187,205,0.2)",
+                label: "Relative Humidity :: %",
+                fillColor: "rgba(0,0,200,0.2)",
                 strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(0,0,255,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [4.0, 5.0, 4.5, 5.0, 5.0, 5.5, 5.0]
+                data: [40, 41, 45, 50, 51, 49, 47]
             }
         ]
     };
@@ -216,84 +236,12 @@ var json =   [
 
     </section>
 
-    <div class="navbar-spacer"></div>
-    <nav class="navbar">
-      <div class="container">
-        <ul class="navbar-list">
-          <li class="navbar-item"><a class="navbar-link" href="#intro">Intro</a></li>
-          <li class="navbar-item">
-            <a class="navbar-link" href="#" data-popover="#codeNavPopover">Code</a>
-            <div id="codeNavPopover" class="popover">
-              <ul class="popover-list">
-                <li class="popover-item">
-                  <a class="popover-link" href="#grid">Grid</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#typography">Typography</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#buttons">Buttons</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#forms">Forms</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#lists">Lists</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#code">Code</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#tables">Tables</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#queries">Queries</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="#utilities">Utilities</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="navbar-item"><a class="navbar-link" href="#examples">Examples</a></li>
-          <li class="navbar-item">
-            <a class="navbar-link" href="#" data-popover="#moreNavPopover">More</a>
-            <div id="moreNavPopover" class="popover">
-              <ul class="popover-list">
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton">On Github</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#browser-support">Browsers</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#license">License</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#extensions">Extensions</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton/releases">Versions</a>
-                </li>
-                <li class="popover-item">
-                  <a class="popover-link" href="https://github.com/dhg/Skeleton#colophon">Colophon</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
     <!-- Why use Skeleton -->
     <div class="docs-section" id="intro">
-      <h6 class="docs-header">Is Quail for you?</h6>
-      <p>Quail enables business, home owners, and vehicles to use our data Lol to analyze enviormental impacts</p>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.getskeleton.com" data-text="Skeleton - A dead simple, responsive boilerplate." data-via="dhg" data-related="dhg">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      <!-- <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.getskeleton.com&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=151131931646052" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width:140px" allowTransparency="true"></iframe> -->
-      <1<iframe src="http://ghbtns.com/github-btn.html?user=dhg&repo=Skeleton&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-      <iframe src="http://ghbtns.com/github-btn.html?user=dhg&repo=Skeleton&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+      <h6 class="docs-header">How does airQuail enable smart cities and smart homes?</h6>
+      <p>airQuail monitors pollutant levels, temperature and humidity conditions. Smart sensors log data onto the cloud which generates analytics based on data captured to derive results such as air quality index and weather conditions in localized regions. Smart-city and smart-home applications can leverage this crowd-sourced data to drive decisions on environment, infrastructure and lifestyle!</p>
+
     </div>
 
 
