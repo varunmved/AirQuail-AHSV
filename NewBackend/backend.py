@@ -8,7 +8,6 @@ import boto.rds
 from datetime import datetime
 import random_data as rd
 from firebase import firebase
-PASSWORD = "Ilovestephdu!69"
 
 
 # conn = boto.rds.connect_to_region(
