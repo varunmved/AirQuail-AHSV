@@ -12,21 +12,13 @@ PASSWORD = "Ilovestephdu!69"
 
 
 # conn = boto.rds.connect_to_region(
-#     "us-west-2",
-#     aws_access_key_id ='AKIAIKDVNEOKND4I6VVQ',
-#     aws_secret_access_key='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')
-#
+#    
 # db = conn.create_dbinstance("db-master-1", 10, 'db.m1.small', 'root', 'hunter2')
 #
 # if 'aa1b1x4r6opzze' in os.environ:
 #     DATABASES = {
 #         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': os.environ['ebdb'],
-#             'USER': os.environ['quailmaster'],
-#             'PASSWORD': os.environ[PASSWORD],
-#             'HOST': os.environ['aa1b1x4r6opzze.cpjyzndy4ytb.us-west-2.rds.amazonaws.com'],
-#             'PORT': os.environ['5432'],
+#             
 #         }
 #     }
 #
